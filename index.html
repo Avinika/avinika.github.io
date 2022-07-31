@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - sample</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+
+<body>
+  <section class="slider-wrapper">
+    <button class="slide-arrow" id="slide-arrow-prev">
+      &#8249;
+    </button>
+    <button class="slide-arrow" id="slide-arrow-next">
+      &#8250;
+    </button>
+    <ul class="slides-container" id="slides-container">
+      <!-- slide 1 content: begin-->
+      <li class="slide">
+        <div class="container">
+          <div class="row">
+            <h1 class="card bg-blue white">Ukraine-Russia War 2022<h2>
+                <div class="card">
+                  <h3>Description of the project <h3>
+                      <p> This project describes about the losses of Russian equipment during the war with Ukraine from February 25th to July 25th, 2022. Russian invasion of Ukraine started from February 2022 and still continuous. Russia has been using several types of troops to invade Ukraine like land force, Air force and navy. The loss of equipment of these troops has been visualized in each slide along with the death toll of Russian personnel.
+
+                      </p>
+                      <p>The purpose of this visualization is to explore the following questions. </p>
+
+                      <p>1. Which day has the highest loss of air force equipment </p>
+
+                      <p>2. In which period Russia has lost land force military equipment in Ukraine and why? </p>
+                </div>
+          </div>
+          <div class="card">
+            <div class="row">
+              <h4>Quick Links</h4>
+              <div class="col-2"></div>
+              <div class="col-3"><button onclick="gotoSlide(2)">Total Losses</button></div>
+              <div class="col-3" onclick="gotoSlide(3)"><button>Airforce Losses</button></div>
+              <div class="col-3" onclick="gotoSlide(4)"><button>Army Losses</button></div>
+              <div class="col-3" onclick="gotoSlide(5)"><button>Navy & Personnel Losses</button></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- slide 1 content: end-->
+
+      <!-- slide 2 content: begin-->
+      <li class="slide">
+        <div class="container">
+          <h3>Total Loss of Russian Equpiment from Feb-July <h3>
+              <div class="row">
+                <div class="col-3 card">
+                  <div id="counter1" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter2" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter3" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter4" class="counter"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 card">
+                  <div id="counter5" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter6" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter7" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter8" class="counter"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 card">
+                  <div id="counter9" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter10" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter11" class="counter"></div>
+                </div>
+                <div class="col-3 card">
+                  <div id="counter12" class="counter"></div>
+                </div>
+              </div>
+        </div>
+        </div>
+
+      </li>
+      <!-- slide 2 content: end -->
+
+      <!-- slide 3 content: begin-->
+      <li class="slide">
+        <div class="container">
+          <h3>Timeline of Russian Airforce equipment loss <h3>
+              <div class="chart-container card">
+                <div class="row">
+                  <div class='col-1'>
+                    <p class="select-label">Select:</p>
+                    <div class="dropdown">
+                      <select multiple name="airforce" id="airforce" onChange="getSelectedAirforceOptions(this)">
+                        <option selected value="Aircraft">Aircraft</option>
+                        <option selected value="Helicopter">Helicopter</option>
+                        <option selected value="Drone">Drone</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class='col-10'>
+                    <section id="slide3-chart1" class="chart-container">
+                      <div class="tip"></div>
+                      <svg width="1180" height="320"></svg>
+                    </section>
+                    <div class="slidecontainer">
+                      <input type="range" min="20" max="60" value="60" step="10" class="slider" id="airforce-range" oninput="updateSliderValues('airforce')">
+                      <p class="center">Data upto: <strong><span id="airforce-range-label">July</span></strong></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-10">
+                    <p>‣ The annotation says that there was maximum loss of air force equipment on 26th February, this is because the Millerovo air base in Russia was attacked by Ukrainian military forces with OTR-21 Tochka missiles, which destroyed several Russian Air Force planes and started fire. </p>
+
+                    <p>‣ On May 2nd Ukraine has knocked 28 Russian Drones Out of the sky and most of them are “workhorse Orlan-10s “And this success is due to corruption in Russia’s military procurement process. </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </li>
+      <!-- slide 3 content: end-->
+
+      <!-- slide 4 content: begin-->
+      <li class="slide">
+        <div class="container">
+          <h3>Timeline of Russian Army equipment loss <h3>
+              <div class="chart-container card">
+                <div class="row">
+                  <div class="col-2">
+                    <p class="select-label">Select:</p>
+                    <div class="dropdown">
+                      <select multiple name="military" id="military" onChange="getSelectedMilitaryOptions(this)">
+                        <option selected value="Tank">Tank</option>
+                        <option selected value="APC">APC</option>
+                        <option selected value="MRL">MRL</option>
+                        <option selected value="Field Artillery">Field Artillery</option>
+                        <option selected value="Military Auto">Military Auto</option>
+                        <option selected value="Fuel tank">Fuel tank</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class='col-10'>
+                    <section id="slide4-chart1" class="chart-container">
+                      <div class="tip"></div>
+                      <svg width="1100" height="320"></svg>
+                    </section>
+                    <div class="slidecontainer" width="1100px">
+                      <input type="range" min="20" max="60" value="60" step="10" class="slider" id="military-range" oninput="updateSliderValues('military')">
+                      <p class="center">Data upto: <strong><span id="military-range-label">July</span></strong></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                    <p>Bar chart says that Russia has lost most of its equipment in Ukraine from February to April this is because of the following reasons.</p>
+                    <p>‣ <strong>Abandoned Equipment:</strong> Most of the Russian tanks were abandoned or captured. This is because of Poor intelligence led to Russian commanding officers not being able to plan their offensive operations properly, and the core of military personnel consists mostly of conscripts who are not professionally trained to use the equipment.</p>
+
+                    <p>‣ <strong>Destroyed Equipment:</strong> As for the equipment that was lost in combat, the war in Ukraine has exposed fundamental design flaws and outdated or inferior-quality materials in Russian equipment</p>
+
+                    <p><strong>‣ Poor Strategy:</strong> The Russian Army operates through self-contained combat units known as battalion tactical groups (BTGs), composed of tanks, infantry, and artillery. These can cause a lot of damage, but effective Ukrainian tactics paired with anti-tank weapons has given a massive blow to Russia. </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </li>
+
+      <!-- slide 4 content: end-->
+      <!-- slide 5 content: begin -->
+      <li class="slide">
+        <div class="container">
+          <h3>Timeline of Russian Navy and Personnel equipment loss <h3>
+              <div class="chart-container card">
+                <div class=row>
+                  <div class='col-1'>
+                    <p class="select-label">Select:</p>
+                    <div class="dropdown">
+                      <select name="navy" id="navy" onChange="getSelectedNavyOptions(this)">
+                        <option selected value="Naval Ship">Naval Ship</option>
+                        <option value="Personnel">Personnel</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class='col-10'>
+                    <section id="slide5-chart1" class="chart-container">
+                      <div class="tip"></div>
+                      <svg width="1180" height="320"></svg>
+                    </section>
+                    <div class="slidecontainer">
+                      <input type="range" min="20" max="60" value="60" step="10" class="slider" id="navy-range" oninput="updateSliderValues('navy')">
+                      <p class="center">Data upto: <strong><span id="navy-range-label">July</span></strong></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </li>
+      <!-- slide 5 content: end -->
+      <!-- slide 6 content: begin-->
+      <li class="slide">
+        <div class="container">
+          <div class="row">
+            <h1 class="card bg-blue white">Conclusion<h2>
+                <div class="card">
+
+                  <p>Forbes estimates that the cost of all equipment lost by the Russian Federation in the war with Ukraine at more than USD 5.1 billion. This is almost 700 billion Rubles. The issue with Ukraine is that the world is becoming increasingly economically and geopolitically interconnected. Adding to the human cost, the war also affects economic costs and inflation, it causes uncertainty, a rise in debt and disruption of normal economic activity among many other things </p>
+                </div>
+          </div>
+          <div class="row">
+            <h1 class="card bg-blue white">Sources<h2>
+                <div class="card">
+
+                  <p><strong>Dataset:&nbsp;</strong><a href="https://www.kaggle.com/datasets/piterfm/2022-ukraine-russian-war?select=russia_losses_equipment.csv" target="_blank">Kaggle dataset</a></p>
+                  <p><strong>html and css:&nbsp;</strong><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></p>
+                  <p><strong>source code:&nbsp;</strong><a href="https://github.com/Avinika/avinika.github.io" target="_blank">Github project</a></p>
+                </div>
+          </div>
+        </div>
+      </li>
+      <!-- slide 6 content: end-->
+    </ul>
+  </section>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
