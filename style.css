@@ -49,18 +49,6 @@ p {
   line-height: 1.8;
 }
 
-.font-light {
-  font-weight: 300;
-}
-
-.font-regular {
-  font-weight: 400;
-}
-
-.font-heavy {
-  font-weight: 700;
-}
-
 .left {
   text-align: left;
 }
@@ -108,30 +96,6 @@ p {
 
 .col-3 {
   width: 19%;
-}
-
-.col-4 {
-  width: 29.33%;
-}
-
-.col-5 {
-  width: 37.66%;
-}
-
-.col-6 {
-  width: 46%;
-}
-
-.col-7 {
-  width: 54.33%;
-}
-
-.col-8 {
-  width: 62.66%;
-}
-
-.col-9 {
-  width: 71%;
 }
 
 .col-10 {
