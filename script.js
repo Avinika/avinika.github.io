@@ -77,7 +77,7 @@ const sliderValues = {
 
 window.onload = () => {
   d3.csv(
-    "https://gist.githubusercontent.com/venkatesh-katari/ba051cb7fbf2d192d2ee82dd5be74e40/raw/ef704d429e78ecadb90ff23c590368fa89e27f85/russia_equipment_loss.csv",
+    "https://gist.githubusercontent.com/Avinika/76c78e1139990651734ed25f5d17a5b4/raw/fd6ec1c6601159283b3a89341a85f56c183ed81f/russian-equipment-losses.csv",
     function (data) {
       data.date = parseTime(data.date);
       russiaEquipmentLosses.push(data);
